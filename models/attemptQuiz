@@ -1,0 +1,33 @@
+const mongoose = require('mongoose');
+
+// user id of student and marks
+const attemptQuiz = new mongoose.Schema({
+    student:{
+        type:mongoose.Types.ObjectId,
+        ref:"user",
+        required:true,
+    },
+    studentName:{
+        type:String,
+        default:"student 1"
+    },
+    marks:{
+        type:Number,
+        required:true,
+    },
+    totalMarks:{
+        type:Number,
+        required:true,
+    },
+    quiz:{
+        type:mongoose.Types.ObjectId,
+        ref:"createQuiz",
+    },
+    quizName:{
+        type:String,
+        required:true,
+        default:"temp",
+    },
+})
+
+module.exports = mongoose.model("attemptQuiz",attemptQuiz);
